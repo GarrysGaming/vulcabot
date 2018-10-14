@@ -94,13 +94,13 @@ bot.on('message', message => {
 
 							dispatcher.on('error' , e => {
 								console.log(e)
-								message.member.voiceChannel.disconnect()
+								message.member.voiceChannel.leave()
 								solosnipe = 0;
 							})
 							dispatcher.on('end' , e => {
 								dispatcher = undefined
 								console.log('fin du son, partie lance')
-								message.member.voiceChannel.disconnect()
+								message.member.voiceChannel.leave()
 								lastmsgsolosnipe.delete()
 								lastmsgsolosnipe = undefined
 								solosnipe = 0;
