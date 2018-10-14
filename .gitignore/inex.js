@@ -20,7 +20,7 @@ bot.on('ready', function () {
 	console.log(botid)
 })
 
-bot.login('NDk0NzI3ODA0MDc2Njg3Mzkw.DpYVYA.RGFkcJJBy95vA3CtNQ46z1PI9ZM')
+bot.login(process.env.TOKEN)
 
 bot.on('message', message => { 
 	if (message.content === '!bf') {
