@@ -49,7 +49,7 @@ bot.on('message', message => {
 			 
 		}else{
 			message.delete()
-			message.reply("merci d'utiliser le salon spécifique à cette commande <#500706845556604938>.")
+			message.reply("merci d'utiliser le salon spécifique à cette commande <#505357056518258708>.")
 		}
 	}
 
@@ -119,7 +119,7 @@ bot.on('message', message => {
 
 			}else{
 				message.delete()
-				message.reply("merci d'utiliser le salon spécifique à cette commande <#500715332365844483>.")
+				message.reply("merci d'utiliser le salon spécifique à cette commande <#505356131431088133>.")
 			}
 		}else{
 			message.delete()
@@ -191,7 +191,7 @@ bot.on('message', message => {
 
 			}else{
 				message.delete()
-				message.reply("merci d'utiliser le salon spécifique à cette commande <#500715332365844483>.")
+				message.reply("merci d'utiliser le salon spécifique à cette commande <#505356131431088133>.")
 			}
 		}else{
 			message.delete()
@@ -263,7 +263,7 @@ bot.on('message', message => {
 
 			}else{
 				message.delete()
-				message.reply("merci d'utiliser le salon spécifique à cette commande <#500715332365844483>.")
+				message.reply("merci d'utiliser le salon spécifique à cette commande <#505356131431088133>.")
 			}
 		}else{
 			message.delete()
