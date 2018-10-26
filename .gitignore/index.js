@@ -24,7 +24,7 @@ bot.login(process.env.TOKEN)
 
 bot.on('message', message => { 
 	if (message.content === '!bf') {
-		if(message.channel.id === '500706845556604938'){
+		if(message.channel.id === '505357056518258708'){
 			if(bfwait === message.author){
 				message.reply("votre proposition de build fight à été anulée.")
 				message.delete()
@@ -57,14 +57,14 @@ bot.on('message', message => {
 
 	if(message.content === '!v solosnipe'){
 		if(message.member.roles.find("name", "Snipe")){
-			if(message.channel.id === '500715332365844483'){
+			if(message.channel.id === '505356131431088133'){
 			message.delete()
 			if(solosnipe === 1){
 				message.reply("une autre partie solo snipe est en cours de lancement, merci de patienter.")
 			}else{
 				if(message.member.voiceChannel){
-					if(message.member.voiceChannel.name === 'solo-snipe'){
-						message.channel.send("<@500722522917175297>")
+					if(message.member.voiceChannel.name === 'partie-snipe'){
+						message.channel.send("@here")
 						message.channel.send({
 					  "embed": {
 					    "color": 5575358,
@@ -76,6 +76,150 @@ bot.on('message', message => {
 					      {
 					        "name": "Mode :",
 					        "value": " - Solo"
+					      },
+					      {
+					        "name": "Lancement dans : ",
+					        "value": " - 5 minutes"
+					      }
+					    ]
+					}
+				}).then(function (message) {
+					lastmsgsolosnipe = message
+				})
+						solosnipe = 1;
+						let splitmsg = message.content.split(" ")
+						//vocal
+						message.member.voiceChannel.join().then(connection => {
+							dispatcher = connection.playFile('flux.wav')
+
+							dispatcher.on('error' , e => {
+								console.log(e)
+								message.member.voiceChannel.leave()
+								solosnipe = 0;
+							})
+							dispatcher.on('end' , e => {
+								dispatcher = undefined
+								console.log('fin du son, partie lance')
+								message.member.voiceChannel.leave()
+								lastmsgsolosnipe.delete()
+								lastmsgsolosnipe = undefined
+								solosnipe = 0;
+							})
+						}).catch(console.log)
+
+					}else{
+						message.reply('vous devez etre connecter au salon vocal solo-snipe.')
+					}
+				}else{
+					message.reply('vous devez etre connecter au salon vocal solo-snipe.')
+				}
+			}
+				
+
+
+			}else{
+				message.delete()
+				message.reply("merci d'utiliser le salon spécifique à cette commande <#500715332365844483>.")
+			}
+		}else{
+			message.delete()
+			message.reply("vous ne disposez pas des permissions pour utiliser cette commande.")
+		}
+	}
+
+	if(message.content === '!v duosnipe'){
+		if(message.member.roles.find("name", "Snipe")){
+			if(message.channel.id === '505356131431088133'){
+			message.delete()
+			if(solosnipe === 1){
+				message.reply("une autre partie solo snipe est en cours de lancement, merci de patienter.")
+			}else{
+				if(message.member.voiceChannel){
+					if(message.member.voiceChannel.name === 'partie-snipe'){
+						message.channel.send("@here")
+						message.channel.send({
+					  "embed": {
+					    "color": 5575358,
+					    "author": {
+					      "name": "Duo Snipe",
+					      "icon_url": "https://cdn.discordapp.com/attachments/486844415571263498/493407087171338251/logo_team_vulcany.jpg"
+					    },
+					    "fields": [
+					      {
+					        "name": "Mode :",
+					        "value": " - Duo"
+					      },
+					      {
+					        "name": "Lancement dans : ",
+					        "value": " - 5 minutes"
+					      }
+					    ]
+					}
+				}).then(function (message) {
+					lastmsgsolosnipe = message
+				})
+						solosnipe = 1;
+						let splitmsg = message.content.split(" ")
+						//vocal
+						message.member.voiceChannel.join().then(connection => {
+							dispatcher = connection.playFile('flux.wav')
+
+							dispatcher.on('error' , e => {
+								console.log(e)
+								message.member.voiceChannel.leave()
+								solosnipe = 0;
+							})
+							dispatcher.on('end' , e => {
+								dispatcher = undefined
+								console.log('fin du son, partie lance')
+								message.member.voiceChannel.leave()
+								lastmsgsolosnipe.delete()
+								lastmsgsolosnipe = undefined
+								solosnipe = 0;
+							})
+						}).catch(console.log)
+
+					}else{
+						message.reply('vous devez etre connecter au salon vocal solo-snipe.')
+					}
+				}else{
+					message.reply('vous devez etre connecter au salon vocal solo-snipe.')
+				}
+			}
+				
+
+
+			}else{
+				message.delete()
+				message.reply("merci d'utiliser le salon spécifique à cette commande <#500715332365844483>.")
+			}
+		}else{
+			message.delete()
+			message.reply("vous ne disposez pas des permissions pour utiliser cette commande.")
+		}
+	}
+
+	if(message.content === '!v squadsnipe'){
+		if(message.member.roles.find("name", "Snipe")){
+			if(message.channel.id === '505356131431088133'){
+			message.delete()
+			if(solosnipe === 1){
+				message.reply("une autre partie solo snipe est en cours de lancement, merci de patienter.")
+			}else{
+				if(message.member.voiceChannel){
+					if(message.member.voiceChannel.name === 'partie-snipe'){
+						message.channel.send("@here")
+						message.channel.send({
+					  "embed": {
+					    "color": 5575358,
+					    "author": {
+					      "name": "Squad Snipe",
+					      "icon_url": "https://cdn.discordapp.com/attachments/486844415571263498/493407087171338251/logo_team_vulcany.jpg"
+					    },
+					    "fields": [
+					      {
+					        "name": "Mode :",
+					        "value": " - Squad"
 					      },
 					      {
 					        "name": "Lancement dans : ",
