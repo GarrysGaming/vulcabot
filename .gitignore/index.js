@@ -35,7 +35,7 @@ bot.on('message', message => {
 				bfwait = undefined
 			}else if(bfwait !== undefined){
 				message.delete()
-				message.reply("une joueur attent déjà pour faire un build fight, rejoin-le.")
+				message.reply("un joueur attent déjà pour faire un build fight, rejoin-le.")
 			}else{
 				idbf = message.author
 				bfwait = message.author
@@ -291,6 +291,19 @@ bot.on('message', message => {
       		]
 		}})
 	}
+	
+	if(message.content === '!resetbf'){
+	   	if(message.channel.id === '505357056518258708'){
+		   	if(message.member.roles.find("name", "Staff Tournoi") || message.member.roles.find("name", "Modérateur") || message.member.roles.find("name", "Fondateur")){
+				message.delete()
+				msgbf.delete()
+				msgbfid = undefined
+				msgbf = undefined
+				idbf = undefined
+				bfwait = undefined
+			}
+		   }
+	   }
 })
     			
 bot.on('messageReactionAdd', (reaction, user) => { 
