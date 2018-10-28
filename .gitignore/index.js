@@ -294,7 +294,7 @@ bot.on('message', message => {
 	
 	if(message.content === '!resetbf'){
 	   	if(message.channel.id === '505357056518258708'){
-		   	if(message.member.roles.find("name", "Staff Tournoi") || message.member.roles.find("name", "Modérateur") || message.member.roles.find("name", "Fondateur")){
+		   	if(message.member.roles.find("name", "Staff tournoi") || message.member.roles.find("name", "Modérateur") || message.member.roles.find("name", "Fondateur")){
 				message.delete()
 				msgbf.delete()
 				msgbfid = undefined
