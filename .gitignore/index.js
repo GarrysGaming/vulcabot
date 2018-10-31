@@ -305,8 +305,9 @@ bot.on('message', message => {
 		   }
 	   }
 	
-		if(message.member.roles.find(name, 'Muted')){
+	if(message.member.roles.find(name, 'Muted')){
 		message.reply('tu es actuelement mute.')
+		message.delete()
 	}
 })
     			
