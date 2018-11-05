@@ -27,7 +27,7 @@ bot.on('message', message => {
 	if(message.content !== '!bf' && message.channel.id === '505357056518258708'){
 		setTimeout(function(){ 
 			message.delete() 
-		}, 30000);
+		}, 300);
 	}
 
 	if (message.content === '!bf') {
@@ -36,7 +36,7 @@ bot.on('message', message => {
 				message.reply("votre proposition de build fight à été anulée.").then(function (message) {
         			setTimeout(function(){ 
 						message.delete() 
-					}, 30000);
+					}, 300);
     			})
 				message.delete()
 				msgbf.delete()
@@ -49,7 +49,7 @@ bot.on('message', message => {
 				message.reply("un joueur attent déjà pour faire un build fight, rejoin-le.").then(function (message) {
         			setTimeout(function(){ 
 						message.delete() 
-					}, 30000);
+					}, 300);
     			})
 			}else{
 				idbf = message.author
@@ -358,7 +358,7 @@ bot.on('messageReactionAdd', (reaction, user) => {
 				msgbf.channel.send(':crossed_swords: Buildfight : ' + idbf + ' vs ' + user + ' :crossed_swords:\nVous pouvez vous mp. Que le meilleur gagne !').then(function (message) {
         			setTimeout(function(){ 
 						message.delete() 
-					}, 30000);
+					}, 300);
     			})
 				msgbf.delete()
 				msgbfid = undefined
