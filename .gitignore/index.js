@@ -23,6 +23,13 @@ bot.on('ready', function () {
 bot.login(process.env.TOKEN)
 
 bot.on('message', message => { 
+
+	if(message.content !== '!bf' && message.channel.id === '505357056518258708'){
+		setTimeout(function(){ 
+			message.delete() 
+		}, 30000);
+	}
+
 	if (message.content === '!bf') {
 		if(message.channel.id === '505357056518258708'){
 			if(bfwait === message.author){
@@ -43,7 +50,7 @@ bot.on('message', message => {
 				message.channel.send('Le joueur ' + message.author + ' souhaite faire un buildfight ! \nSi tu souhaites participer au build fight réagit avec 👍 \n @here').then(function (message) {
         			message.react("👍")
         			msgbfid = message.id
-        			msgbf = message
+					msgbf = message
     			})
 			}
 			 
@@ -52,8 +59,6 @@ bot.on('message', message => {
 			message.reply("merci d'utiliser le salon spécifique à cette commande <#505357056518258708>.")
 		}
 	}
-
-
 
 	if(message.content === '!v solosnipe'){
 		if(message.member.roles.find("name", "Snipe")){
@@ -304,7 +309,37 @@ bot.on('message', message => {
 			}
 		   }
 	   }
-	
+
+	if(message.member.roles.find(name, 'Muted')){
+		message.reply('tu es actuelement mute.')
+		message.delete()
+	}
+
+	//if(message.content.startsWith('!v mute')){
+		//if(message.member.roles.find(name, 'Modérateur') || message.member.roles.find(name, 'Fondateur') || message.member.roles.find(name, 'Staff tournoi')){
+			//if(message.channel.id === '506890218893475840'){
+			//	const args = message.content.slice('!v mute').trim().split(/ +g/)
+			//	const arg = args.shift().toLowerCase()
+			//	if(arg.length === 0 || arg.length === 1 || arg.length === 2){
+			//		message.reply('vous devez renseignez une personne à senctionner, une durée (nombre de seconde) et une raison.')
+			//	}else if(arg.length === 3){
+			//		let muterole = message.guild.roles.find(name, 'Muted')
+			//		let tomute = message.guild.members.get(arg[0])
+			//		let timemuted = arg[1]
+			//		let mutedraison = arg[2]
+			//		if(tomute.roles.find(name, 'Muted')){
+			//		}else{
+			//			tomute.addRole(muterole.id)
+			//			message.channel.send('<@${tomute.id}> à été mute pour ${timemuted} secondes pour ${mutedraison}.')
+			//			setTimeout(function(){
+			//				tomute.removeRole(muterole)
+			//				message.channel.send('<@${tomute.id}> à été de-mute.')
+			//			}, ms (timemuted))
+			//		}
+			//	}
+			//}
+		//}
+	//}
 })
     			
 bot.on('messageReactionAdd', (reaction, user) => { 
@@ -317,10 +352,11 @@ bot.on('messageReactionAdd', (reaction, user) => {
 				msgbfid = undefined
 				msgbf = undefined
 				idbf = undefined
-				bfwait = undefined		
+				bfwait = undefined	
+				setTimeout(function(){ 
+					message.delete() 
+				}, 30000);	
 		}
 		}
 	}
 })
-
-
