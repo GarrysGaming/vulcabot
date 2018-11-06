@@ -24,11 +24,10 @@ bot.login(process.env.TOKEN)
 
 bot.on('message', message => { 
 
-	if(message.content !== '!bf' && message.channel.id === '505357056518258708'){
-		setTimeout(function(){ 
-			message.delete() 
-		}, 300);
-	}
+	  
+		
+
+		
 
 	if (message.content === '!bf') {
 		if(message.channel.id === '505357056518258708'){
