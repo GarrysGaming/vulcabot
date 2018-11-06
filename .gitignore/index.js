@@ -32,11 +32,7 @@ bot.on('message', message => {
 	if (message.content === '!bf') {
 		if(message.channel.id === '505357056518258708'){
 			if(bfwait === message.author){
-				message.reply("votre proposition de build fight à été anulée.").then(function (message) {
-        			setTimeout(function(){ 
-						message.delete() 
-					}, 300);
-    			})
+				message.reply("votre proposition de build fight à été anulée.")
 				message.delete()
 				msgbf.delete()
 				msgbfid = undefined
@@ -45,11 +41,7 @@ bot.on('message', message => {
 				bfwait = undefined
 			}else if(bfwait !== undefined){
 				message.delete()
-				message.reply("un joueur attent déjà pour faire un build fight, rejoin-le.").then(function (message) {
-        			setTimeout(function(){ 
-						message.delete() 
-					}, 300);
-    			})
+				message.reply("un joueur attent déjà pour faire un build fight, rejoin-le.")
 			}else{
 				idbf = message.author
 				bfwait = message.author
@@ -354,11 +346,7 @@ bot.on('messageReactionAdd', (reaction, user) => {
 		if(reaction.message.id === msgbfid){
 			if(user.username === botid){
 			}else if(user !== idbf){
-				msgbf.channel.send(':crossed_swords: Buildfight : ' + idbf + ' vs ' + user + ' :crossed_swords:\nVous pouvez vous mp. Que le meilleur gagne !').then(function (message) {
-        			setTimeout(function(){ 
-						message.delete() 
-					}, 300);
-    			})
+				msgbf.channel.send(':crossed_swords: Buildfight : ' + idbf + ' vs ' + user + ' :crossed_swords:\nVous pouvez vous mp. Que le meilleur gagne !')
 				msgbf.delete()
 				msgbfid = undefined
 				msgbf = undefined
