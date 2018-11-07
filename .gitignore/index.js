@@ -3,7 +3,7 @@ const bot = new Discord.Client()
 var msgbfid
 var msgbf
 var idbf
-var botif
+var botid
 var quon
 
 var dispatcher;
@@ -13,26 +13,28 @@ var solosnipe = 0;
 
 var bfwait = undefined;
 
+// ready action
 bot.on('ready', function () { 
 	console.log("bot connecter") 
 	bot.user.setActivity("!v help")
-	botid = bot.user.username
+	botid = bot.user.id
 	console.log(botid)
 })
 
+//bot.login(token)
 bot.login(process.env.TOKEN)
 
 bot.on('message', message => { 
 
-	  
-		
-
-		
-
-	if (message.content === '!bf') {
-		if(message.channel.id === '505357056518258708'){
+	//build figth command
+	if(message.channel.id === '505357056518258708'){
+		if(message.content === '!bf'){
 			if(bfwait === message.author){
-				message.reply("votre proposition de build fight à été anulée.")
+				message.reply("votre proposition de build fight à été anulée.").then(function (message) {
+					setTimeout(() => {
+						message.delete()
+					}, 300000);
+				})
 				message.delete()
 				msgbf.delete()
 				msgbfid = undefined
@@ -41,7 +43,11 @@ bot.on('message', message => {
 				bfwait = undefined
 			}else if(bfwait !== undefined){
 				message.delete()
-				message.reply("un joueur attent déjà pour faire un build fight, rejoin-le.")
+				message.reply("un joueur attent déjà pour faire un build fight, rejoin-le.").then(function (message) {
+					setTimeout(() => {
+						message.delete()
+					}, 300000);
+				})
 			}else{
 				idbf = message.author
 				bfwait = message.author
@@ -52,15 +58,16 @@ bot.on('message', message => {
 					msgbf = message
     			})
 			}
-			 
-		}else{
-			message.delete()
-			message.reply("merci d'utiliser le salon spécifique à cette commande <#505357056518258708>.")
+		}else if(message.author.id !== botid){
+			setTimeout(() => {
+				message.delete()
+			}, 300000);
 		}
 	}
 
+	//solosnipe command
 	if(message.content === '!v solosnipe'){
-		if(message.member.roles.find("name", "Snipe")){
+		if(message.member.roles.find(role => role.name === 'Snipe')){
 			if(message.channel.id === '505356131431088133'){
 			message.delete()
 			if(solosnipe === 1){
@@ -131,8 +138,9 @@ bot.on('message', message => {
 		}
 	}
 
+	//duosnipe command
 	if(message.content === '!v duosnipe'){
-		if(message.member.roles.find("name", "Snipe")){
+		if(message.member.roles.find(role => role.name === 'Snipe')){
 			if(message.channel.id === '505356131431088133'){
 			message.delete()
 			if(solosnipe === 1){
@@ -203,8 +211,9 @@ bot.on('message', message => {
 		}
 	}
 
+	//squadsnipe command
 	if(message.content === '!v squadsnipe'){
-		if(message.member.roles.find("name", "Snipe")){
+		if(message.member.roles.find(role => role.name === 'Snipe')){
 			if(message.channel.id === '505356131431088133'){
 			message.delete()
 			if(solosnipe === 1){
@@ -275,6 +284,7 @@ bot.on('message', message => {
 		}
 	}
 
+	//help command
 	if (message.content === '!v help'){
 		message.delete()
 		message.channel.send({embed: {
@@ -296,9 +306,10 @@ bot.on('message', message => {
 		}})
 	}
 	
+	// resetbf command
 	if(message.content === '!resetbf'){
 	   	if(message.channel.id === '505357056518258708'){
-		   	if(message.member.roles.find("name", "Staff tournoi") || message.member.roles.find("name", "Modérateur") || message.member.roles.find("name", "Fondateur")){
+		   	if(message.member.roles.find(role => role.name === 'Staff tournoi') || message.member.roles.find(role => role.name === 'Modérateur') || message.member.roles.find(role => role.name === 'Fondateur')){
 				message.delete()
 				msgbf.delete()
 				msgbfid = undefined
@@ -308,51 +319,35 @@ bot.on('message', message => {
 			}
 		   }
 	   }
-
-	if(message.member.roles.find(name, 'Muted')){
-		message.reply('tu es actuelement mute.')
+	// muted
+	if(message.member.roles.find(role => role.name === 'Muted')){
+		message.reply('tu es actuelement mute.').then(function (message) {
+			setTimeout(() => {
+				message.delete()
+			}, 300000);
+		})
 		message.delete()
 	}
 
-	//if(message.content.startsWith('!v mute')){
-		//if(message.member.roles.find(name, 'Modérateur') || message.member.roles.find(name, 'Fondateur') || message.member.roles.find(name, 'Staff tournoi')){
-			//if(message.channel.id === '506890218893475840'){
-			//	const args = message.content.slice('!v mute').trim().split(/ +g/)
-			//	const arg = args.shift().toLowerCase()
-			//	if(arg.length === 0 || arg.length === 1 || arg.length === 2){
-			//		message.reply('vous devez renseignez une personne à senctionner, une durée (nombre de seconde) et une raison.')
-			//	}else if(arg.length === 3){
-			//		let muterole = message.guild.roles.find(name, 'Muted')
-			//		let tomute = message.guild.members.get(arg[0])
-			//		let timemuted = arg[1]
-			//		let mutedraison = arg[2]
-			//		if(tomute.roles.find(name, 'Muted')){
-			//		}else{
-			//			tomute.addRole(muterole.id)
-			//			message.channel.send('<@${tomute.id}> à été mute pour ${timemuted} secondes pour ${mutedraison}.')
-			//			setTimeout(function(){
-			//				tomute.removeRole(muterole)
-			//				message.channel.send('<@${tomute.id}> à été de-mute.')
-			//			}, ms (timemuted))
-			//		}
-			//	}
-			//}
-		//}
-	//}
 })
-    			
+   
+//reaction (buildfight)
 bot.on('messageReactionAdd', (reaction, user) => { 
 	if(reaction.emoji.name === "👍"){
 		if(reaction.message.id === msgbfid){
-			if(user.username === botid){
+			if(user.id === botid){
 			}else if(user !== idbf){
-				msgbf.channel.send(':crossed_swords: Buildfight : ' + idbf + ' vs ' + user + ' :crossed_swords:\nVous pouvez vous mp. Que le meilleur gagne !')
 				msgbf.delete()
 				msgbfid = undefined
 				msgbf = undefined
 				idbf = undefined
 				bfwait = undefined	
-					
+				msgbf.channel.send(':crossed_swords: Buildfight : ' + idbf + ' vs ' + user + ' :crossed_swords:\nVous pouvez vous mp. Que le meilleur gagne !').then(function (message) {
+					setTimeout(() => {
+						message.delete()
+					}, 300000);
+				})
+				
 		}
 		}
 	}
