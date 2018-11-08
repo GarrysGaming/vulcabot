@@ -342,11 +342,7 @@ bot.on('messageReactionAdd', (reaction, user) => {
 				msgbf = undefined
 				idbf = undefined
 				bfwait = undefined	
-				msgbf.channel.send(':crossed_swords: Buildfight : ' + idbf + ' vs ' + user + ' :crossed_swords:\nVous pouvez vous mp. Que le meilleur gagne !').then(function (message) {
-					setTimeout(() => {
-						message.delete()
-					}, 300000);
-				})
+				msgbf.channel.send(':crossed_swords: Buildfight : ' + idbf + ' vs ' + user + ' :crossed_swords:\nVous pouvez vous mp. Que le meilleur gagne !')
 				
 		}
 		}
