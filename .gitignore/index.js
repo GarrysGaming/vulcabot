@@ -26,6 +26,14 @@ bot.login(process.env.TOKEN)
 
 bot.on('message', message => { 
 
+	//antipub
+	if(!message.member.roles.find(role => role.name === 'Fondateur')){
+		if(message.content.includes("discordapp.com/invite") || message.content.includes("discord.gg")){
+			message.reply("merci de ne pas faire de publicité.")
+			message.delete()
+		}
+	}
+	
 	//build figth command
 	if(message.channel.id === '505357056518258708'){
 		if(message.content === '!bf'){
