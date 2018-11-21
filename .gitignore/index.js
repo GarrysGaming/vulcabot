@@ -344,14 +344,17 @@ bot.on('messageReactionAdd', (reaction, user) => {
 	if(reaction.emoji.name === "👍"){
 		if(reaction.message.id === msgbfid){
 			if(user.id === botid){
-			}else if(user !== idbf){
+			}else if(user !== idbf){	
+				msgbf.channel.send(':crossed_swords: Buildfight : ' + idbf + ' vs ' + user + ' :crossed_swords:\nVous pouvez vous mp. Que le meilleur gagne !').then(function (message) {
+					setTimeout(() => {
+						message.delete()
+					}, 300000);
+				})
 				msgbf.delete()
 				msgbfid = undefined
 				msgbf = undefined
 				idbf = undefined
-				bfwait = undefined	
-				msgbf.channel.send(':crossed_swords: Buildfight : ' + idbf + ' vs ' + user + ' :crossed_swords:\nVous pouvez vous mp. Que le meilleur gagne !')
-				
+				bfwait = undefined
 		}
 		}
 	}
