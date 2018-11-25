@@ -101,7 +101,7 @@ bot.on('message', message => {
 					      },
 					      {
 					        "name": "Lancement dans : ",
-					        "value": " - 5 minutes"
+					        "value": " - 2 minutes"
 					      }
 					    ]
 					}
@@ -175,7 +175,7 @@ bot.on('message', message => {
 					      },
 					      {
 					        "name": "Lancement dans : ",
-					        "value": " - 5 minutes"
+					        "value": " - 2 minutes"
 					      }
 					    ]
 					}
@@ -249,7 +249,7 @@ bot.on('message', message => {
 					      },
 					      {
 					        "name": "Lancement dans : ",
-					        "value": " - 5 minutes"
+					        "value": " - 2 minutes"
 					      }
 					    ]
 					}
