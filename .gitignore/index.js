@@ -6,6 +6,9 @@ var idbf
 var botid
 var quon
 
+//snipe code
+var codesnipeon = 0
+
 var dispatcher;
 
 var lastmsgsolosnipe = undefined;
@@ -73,7 +76,7 @@ bot.on('message', message => {
 		}
 	}
 
-	//solosnipe command
+		//solosnipe command
 	if(message.content === '!v solosnipe'){
 		if(message.member.roles.find(role => role.name === 'Snipe')){
 			if(message.channel.id === '505356131431088133'){
@@ -123,6 +126,7 @@ bot.on('message', message => {
 								lastmsgsolosnipe.delete()
 								lastmsgsolosnipe = undefined
 								solosnipe = 0;
+								codesnipe(message.channel)
 							})
 						}).catch(console.log)
 
@@ -196,6 +200,7 @@ bot.on('message', message => {
 								lastmsgsolosnipe.delete()
 								lastmsgsolosnipe = undefined
 								solosnipe = 0;
+								codesnipe(message.channel)
 							})
 						}).catch(console.log)
 
@@ -269,6 +274,7 @@ bot.on('message', message => {
 								lastmsgsolosnipe.delete()
 								lastmsgsolosnipe = undefined
 								solosnipe = 0;
+								codesnipe(message.channel)
 							})
 						}).catch(console.log)
 
@@ -292,6 +298,28 @@ bot.on('message', message => {
 		}
 	}
 
+	//code snipe
+	if(message.channel.id === '516224377071599626'){
+		if(message.author.id !== botid){
+			message.delete()
+		} 
+		if(message.content.length === 3){
+			if(codesnipeon === 1){
+				message.channel.send(message.content + ' => ' + message.author)
+			}
+		}
+	}
+
+	//function code snipe on/off
+	function codesnipe(c){
+		codesnipeon = 1;
+		c.send('@here Lancement de la partie. Veuillez indiquer les 3 deniers caractere de votre code de partie dans <#516224377071599626>. Il se situe en haut à gauche dans votre jeu.').then(function (message) {
+			setTimeout(() => {
+				message.delete()
+				codesnipeon = 0
+			}, 180000);
+		})
+	}
 	//help command
 	if (message.content === '!v help'){
 		message.delete()
