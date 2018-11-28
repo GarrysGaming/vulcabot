@@ -65,6 +65,7 @@ bot.on('message', message => {
 				message.delete()
 				message.channel.send('Le joueur ' + message.author + ' souhaite faire un buildfight ! \nSi tu souhaites participer au build fight réagit avec 👍 \n @here').then(function (message) {
         			message.react("👍")
+				message.react("❎")
         			msgbfid = message.id
 					msgbf = message
     			})
@@ -384,6 +385,24 @@ bot.on('messageReactionAdd', (reaction, user) => {
 				idbf = undefined
 				bfwait = undefined
 		}
+		}
+	}else if(reaction.emoji.name === "❎"){
+		console.log("1")
+		if(reaction.message.id === msgbfid){
+			console.log("2")
+			if(user === idbf){
+				console.log("3")
+				msgbf.channel.send(idbf + ", votre proposition de build fight à été anulée.").then(function (message) {
+					setTimeout(() => {
+						message.delete()
+					}, 300000);
+				})
+				msgbf.delete()
+				msgbfid = undefined
+				msgbf = undefined
+				idbf = undefined
+				bfwait = undefined
+			}
 		}
 	}
 })
