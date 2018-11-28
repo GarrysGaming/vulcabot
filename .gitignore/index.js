@@ -63,7 +63,7 @@ bot.on('message', message => {
 				idbf = message.author
 				bfwait = message.author
 				message.delete()
-				message.channel.send('Le joueur ' + message.author + ' souhaite faire un buildfight ! \nSi tu souhaites participer au build fight réagit avec 👍 \n @here').then(function (message) {
+				message.channel.send('Le joueur ' + message.author + ' souhaite faire un buildfight ! \nSi tu souhaites participer au build fight réagit avec 👍 \nPour annuler ton build-fight réagit avec ❎ \n@here').then(function (message) {
         			message.react("👍")
 				message.react("❎")
         			msgbfid = message.id
