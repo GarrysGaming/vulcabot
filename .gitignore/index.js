@@ -32,7 +32,33 @@ bot.on('message', message => {
 	//antipub
 	if(!message.member.roles.find(role => role.name === 'Fondateur')){
 		if(message.content.includes("discordapp.com/invite") || message.content.includes("discord.gg")){
-			message.reply("merci de ne pas faire de publicité.")
+			message.channel.send({
+				"embed": {
+					"footer": {
+						"text": Date()
+					  },
+									   "color": 5575358,
+									   "author": {
+										 "name": "Admin Bot",
+										 "icon_url": "https://cdn.discordapp.com/attachments/486844415571263498/493407087171338251/logo_team_vulcany.jpg"
+									   },
+									   "fields": [
+										 {
+										   "name": "Action :",
+										   "value": " - Avertissement"
+										 },
+										 {
+										   "name": "A :",
+										   "value": message.author.username
+										 },
+							   {
+										   "name": "Pour :",
+										   "value": " - Publication d'une invitation discord"
+										 }
+									   ]
+								   }
+			   }
+			   )
 			message.delete()
 		}
 	}
