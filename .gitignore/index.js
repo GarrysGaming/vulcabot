@@ -49,7 +49,7 @@ bot.on('message', message => {
 										 },
 										 {
 										   "name": "A :",
-										   "value": message.author.username
+										   "value": " - " + message.author.username
 										 },
 							   {
 										   "name": "Pour :",
