@@ -30,7 +30,7 @@ bot.login(process.env.TOKEN)
 bot.on('message', message => { 
 
 	//antipub
-	if(!message.member.roles.find(role => role.name === 'Fondateur' || !message.mambre.roles.fin(role => role.name === 'BOT'))){
+	if(!message.member.roles.find(role => role.name === 'Fondateur' || !message.membre.roles.find(role => role.name === 'BOT'))){
 		if(message.content.includes("discordapp.com/invite") || message.content.includes("discord.gg")){
 			message.channel.send({
 				"embed": {
