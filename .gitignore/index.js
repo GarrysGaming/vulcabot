@@ -30,8 +30,8 @@ bot.login(process.env.TOKEN)
 bot.on('message', message => { 
 
 	//antipub
-	if(!message.member.roles.find(role => role.name === 'Fondateur') || !message.member.roles.find(role => role.name === 'Staff') || !message.membre.roles.find(role => role.name === 'BOT')){
-		if(message.content.includes("discordapp.com/invite") || message.content.includes("discord.gg")){
+	if(message.content.includes("discordapp.com/invite") || message.content.includes("discord.gg")){
+		if(!message.member.roles.find(role => role.name === 'Fondateur') || !message.member.roles.find(role => role.name === 'Staff') || !message.membre.roles.find(role => role.name === 'BOT')){
 			message.channel.send({
 				"embed": {
 					"footer": {
