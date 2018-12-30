@@ -31,7 +31,8 @@ bot.on('message', message => {
 
 	//antipub
 	if(message.content.includes("discordapp.com/invite") || message.content.includes("discord.gg")){
-		if(!message.member.roles.find(role => role.name === 'Fondateur') || !message.member.roles.find(role => role.name === 'Staff') || !message.membre.roles.find(role => role.name === 'BOT')){
+		if(message.member.roles.find(role => role.name === 'Fondateur') || message.member.roles.find(role => role.name === 'Staff') || message.membre.roles.find(role => role.name === 'BOT')){ }else{
+			
 			message.channel.send({
 				"embed": {
 					"footer": {
